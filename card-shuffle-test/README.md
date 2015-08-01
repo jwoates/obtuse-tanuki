@@ -5,4 +5,4 @@ You can view the working code on http://cardshuffle.canagaoglu.com/
 
 
 The test output file is under http://cardshuffle.canagaoglu.com/js/unittests.html 
-I'm using QUnit as the unit testing framework.
+<br/>I'm using QUnit as the unit testing framework.
