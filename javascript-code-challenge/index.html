@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>  
+  <head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">  
+    <meta http-equiv="Content-Script-Type" content="text/javascript"> 
+    <style>
+.myButton {
+  background-color:#44c767;
+  border: medium none;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:16px;
+  padding:12px 31px;
+  text-decoration:none;
+}
+.myButton:hover {
+  background-color:#5cbf2a;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+    </style> 
+    <script type="text/javascript">  
+      var regex = /(^[a-j]{1}$)|(^[NLQR])|(^[Z](?:_?[a-j]+)*$)|/
+      //(^[a-j]{1}$) - one letter and between a-j
+      // (^[NLQR]) - starts with one of these letters.
+      //(^[Z](?:_?[a-j]+)*$) - Starts with Z and followed by one of the valid lowercase letters
+      var splitpattern = / +?/g;
+
+      // Break the string into pieces separated by the pattern above and
+      // Store the pieces in an array called subStrings
+      function validateString(stringInput){ 
+        document.getElementById("results").innerHTML = "";
+        var rawString = stringInput.value;
+        var subStrings = rawString.split(splitpattern);
+        var cleanString = subStrings.join(" ");
+
+        for (var i = 0; i<subStrings.length;  i++){
+          var OK = regex.test(subStrings[i]);  
+        if (!OK)  
+          document.getElementById("results").innerHTML += subStrings[i] + " INVALID "; 
+        else
+          document.getElementById("results").innerHTML += subStrings[i] + " VALID "; 
+        }
+
+      }  
+    </script>  
+  </head>  
+  <body>  
+    <p>Please enter the string to validate.</p>
+    <form action="#">  
+      <input id="string"><br/><br/><button class="myButton" onclick="validateString(document.getElementById('string'));">Check</button>
+    </form>  
+    <p id="results"></p>
+  </body>  
+</html>
