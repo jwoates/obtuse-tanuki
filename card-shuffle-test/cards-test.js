@@ -1,4 +1,3 @@
-var assert = require("assert");
 var fs = require("fs");
 var vm = require("vm");
 var path = "./card-shuffle-test/cards.js";
