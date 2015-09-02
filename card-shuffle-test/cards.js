@@ -9,5 +9,15 @@ Deck = function(){
             }
         }
         return this.sortedDeck;
-    }
-}
+    };
+    this.shuffle = function(){
+        this.sort();
+        for (var i = this.sortedDeck.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = this.sortedDeck[i];
+            this.sortedDeck[i] = this.sortedDeck[j];
+            this.sortedDeck[j] = temp;
+        }
+        return this.sortedDeck;
+    };
+};

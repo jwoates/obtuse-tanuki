@@ -1,0 +1,7 @@
+{
+  "name": "obtuse",
+  "private": true,
+  "devDependencies": {
+    "sinon": "^1.16.1"
+  }
+}
