@@ -10,6 +10,7 @@ Deck = function(){
         }
         return this.sortedDeck;
     };
+
     this.shuffle = function(){
         this.sort();
         for (var i = this.sortedDeck.length - 1; i > 0; i--) {
