@@ -1,5 +1,6 @@
 ### Instructions
 
-make a fork of this repo, inside each test directory, follow the test instructions and add your files there.
+npm install to install dependencies
+mocha [test-file-path] to run tests
 
-When complete makea a pull request to master.
+
