@@ -34,12 +34,11 @@ function validateString(str) {
 
 		// If ♥ and ♦ are valid sets of strings, then so are N♥♦, L♥♦, Q♥♦, and R♥♦
 		if (validUpper.indexOf(str.charAt(0)) != -1) {
-			str = str.substr(1);
-			var strLen = str.length;
-			var subStr1, subStr2;
+			var tempStr = str.substr(1);
+			var strLen = tempStr.length;
 			for (var i = 1; i < strLen; i++) {
-				substr1 = str.substr(0,i);
-				substr2 = str.substr(i);
+				var substr1 = tempStr.substr(0,i);
+				var substr2 = tempStr.substr(i);
 				if (validate(substr1) && validate(substr2)) {
 					return true;
 				}
