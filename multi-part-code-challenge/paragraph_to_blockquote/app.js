@@ -1,5 +1,5 @@
 window.onload = function() {
-	var editableDivs = document.querySelectorAll("div[contenteditable='true'");
+	var editableDivs = document.querySelectorAll("div[contenteditable='true']");
 	var numDivs = editableDivs.length;
 	var currDiv;
 
