@@ -1,3 +1,9 @@
+module.exports = {
+	sortDeck: sortDeck,
+	shuffleDeck: shuffleDeck,
+	createDeck: createDeck
+}
+
 /*********************************************
  *	SHUFFLING AND SORTING
  *********************************************/
@@ -30,28 +36,24 @@ function shuffleDeck(deck) {
     return deck;
 }
 
-
-/*********************************************
- *	CREATING DECKS
- *********************************************/
-
-// arbitrary values for suits
-var suitValues = {
-	0: "heart",
-	1: "diamond",
-	2: "spade",
-	3: "club"
-}
-
-// card object
-function Card(suit, value) {
-	this.suit = suit;
-	this.value = value;
-	return this;
-}
-
-// create a deck of cards
+//create a sorted deck
 function createDeck() {
+
+	// arbitrary values for suits
+	var suitValues = {
+		0: "heart",
+		1: "diamond",
+		2: "spade",
+		3: "club"
+	}
+
+	// card object
+	function Card(suit, value) {
+		this.suit = suit;
+		this.value = value;
+		return this;
+	}
+
 	var deck = [];
 	for (var i = 0; i < 4; i++) {
 		for (var j = 2; j < 14; j++) {
@@ -59,68 +61,4 @@ function createDeck() {
 		}
 	}
 	return deck;
-}
-
-
-/*********************************************
- *	TESTING
- *********************************************/
-
-// created two decks, one will stay sorted
-var deck = createDeck();
-var sortedDeck = createDeck();
-
-// shuffle/sort deck 10 times
-function testShuffleSort(times) {
-	var passed = true;
-	for (var i = 0; i < times; i++) {
-		//check deck is shuffled
-		shuffleDeck(deck);
-		if (!isDeckShuffled(deck, sortedDeck)) {
-			passed = false;
-			break;
-		}
-		sortDeck(deck);
-		//check deck is sorted
-		if (!isDeckSorted(deck, sortedDeck)) {
-			passed = false;
-			break;
-		}
-	}
-	if (passed) {
-		console.log("deck successfully shuffled and sorted " + times + " times");
-	}
-	else {
-		console.log("deck did not successfully shuffle and sort " + times + " times");
-	}
-}
-
-testShuffleSort(10);
-
-
-/*********************************************
- *	COMPARISON HELPERS
- *********************************************/
-
-// check if two cards are equalss
-function cardEq(card1, card2) {
-	return JSON.stringify(card1) == JSON.stringify(card2);
-}
-
-// check if deck is sorted
-function isDeckSorted(deck, sortedDeck) {
-	return JSON.stringify(deck) == JSON.stringify(sortedDeck);
-}
-
-// check if deck is shuffled
-// arbitrarily check that at least half the deck differs from the sorted deck
-function isDeckShuffled(deck, sortedDeck) {
-	var diff = 0;
-	var deckLength = deck.length;
-	for (var i = 0; i < deckLength; i++) {
-		if (!cardEq(deck[i], sortedDeck[i])) {
-			++diff;
-		}
-	}
-	return diff >= 26;
 }
