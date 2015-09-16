@@ -55,7 +55,7 @@ var values = {
 function createDeck() {
     var deck = [];
     var ord = 0;
-    for (i = 0; i < numSuits; i++) {
+    for (var i = 0; i < numSuits; i++) {
         for (j = 0; j < numValues; j++) {
             deck.push(new Card(suits[i], values[j],ord));
             ord++;
@@ -92,7 +92,7 @@ var shuffledDeck = shuffle(deck);
 // how well its shuffled.  This sort takes advantage
 // of the ord proporty in the card class above
 function ascend(deck){
-    for(i = 0; i < numCards; i++){
+    for(var i = 0; i < numCards; i++){
         var j = i;
         while (j > 0 && deck[j-1].ord > deck[j].ord){
             var temp = deck[j];
@@ -116,7 +116,7 @@ var ascendingDeck = ascend(deck);
 function fullDeck(deck){
     var suits = [0,0,0,0];
     var values = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-    for(i = 0; i < numCards; i++){
+    for(var i = 0; i < numCards; i++){
         switch(deck[i].suit){
             case 'clubs':
                 suits[0]++;
@@ -178,12 +178,12 @@ function fullDeck(deck){
         }
     }
     //should be all 13's
-    for(i = 0; i < 4; i++){
+    for(var i = 0; i < 4; i++){
         if(suits[i] !== 13){return false;}
     }
     
     //should be all 4's
-    for(i = 0; i < 13; i++){
+    for(var i = 0; i < 13; i++){
         if(values[i] !== 4){return false;}
     }
     //if we are here it is a full deck
@@ -193,7 +193,7 @@ function fullDeck(deck){
 //if in correct ascending order the ord proporty will go from 0-51
 function ascendCheck(deck){
     var ord = 0;
-    for(i = 0; i < 52;i++){
+    for(var i = 0; i < 52;i++){
         if(deck[i].ord !== ord){return false;}
         ord++;
     }
