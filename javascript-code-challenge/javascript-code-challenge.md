@@ -23,7 +23,7 @@ Example:
   Za VALID
   Nj INVALID
    
-> validateString("QZja\nRhfa");
+> validateString("QZja Rhfa");
   QZja VALID
   Rhfa INVALID
   
