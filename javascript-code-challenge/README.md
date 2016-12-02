@@ -1,0 +1,1 @@
+I tried to utilize Regex to validate the input. I listed a few conditions the expression is checking for. It still needs work but thought it would give you an idea of my approach.

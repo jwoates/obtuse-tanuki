@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Change Paragraph</title>
+  <style>
+  #editableDiv {
+    clear: left;
+    font-style: italic;
+    line-height: 1.5em;
+    margin: 0.75em 0;
+}
+.myButton {
+  background-color:#44c767;
+  border: medium none;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:16px;
+  padding:12px 31px;
+  text-decoration:none;
+}
+.myButton:hover {
+  background-color:#5cbf2a;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+</style>
+</head>
+    <body >
+       
+<div id="editableDiv" contenteditable="true">
+<p>Everything contained within this div is editable in browsers that support HTML5.</p>
+<p>Everything contained within this div is editable in browsers that support HTML5.</p>
+This is not a paragraph and will not be changed.
+<p>Everything contained within this div is editable in browsers that support HTML5.</p>
+</div>
+<button type="button" class="myButton" onclick="onChange()">Change Paragraph</button>
+<script>
+function onChange() {
+    var editableDiv = document.getElementById('editableDiv')
+    for (var i=0; i<editableDiv.childNodes.length; i++) {
+        var p = editableDiv.childNodes[i]
+        if(p.tagName=='P') {
+            var bq = document.createElement('BLOCKQUOTE')
+            bq.innerHTML = p.innerHTML;
+            editableDiv.insertBefore(bq, p)
+            editableDiv.removeChild(p)
+        }
+    }
+    return c
+}
+
+</script>
+    </body>
+</html>

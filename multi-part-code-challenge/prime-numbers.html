@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Prime Numbers</title>
+</head>
+    <body >
+        <div id="primes" style="width:400px; margin:30px;"></div>
+<script>
+var isPrime = function(n){
+  //Include 2 because that's the only even number that's also a prime number
+    if (n%2===0){
+        if (n===2) return true;
+        else return false;
+    }
+    //We only check until the sqrt because after that the divisors just flip around repeat.
+    //Starting the loop at 3 and increasing it by two to keep checking odd numbers only. 
+    for (m=3; m<=Math.sqrt(n); m+=2){
+        if (n%m===0){return false;}
+    }
+    return true;
+}
+
+var findPrimes = function(limit){
+    var n=2, //the first prime number
+    primeNumbers = [];
+
+    while (limit>0){
+        if (isPrime(n)){
+            primeNumbers.push(n);
+            limit--;
+        }
+        n++;
+    }
+
+    return primeNumbers.join(" ");
+}
+
+document.getElementById("primes").innerHTML = findPrimes(100);
+
+</script>
+    </body>
+</html>
